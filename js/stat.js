@@ -39,7 +39,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  for (var i = 0; i < names.length; i++) {
+  for (var i = 0; i < players.length; i++) {
     var height = (BAR_HEIGHT * times[i]) / maxTime;
     var roundTime = Math.round(times[i]);
 
