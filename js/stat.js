@@ -26,9 +26,9 @@ var renderCongratulation = function (ctx) {
 
 var renderHistograms = function (ctx, players, times) {
   players.forEach(function(elem, i) {
+    var maxTime = getMaxElement(times);
     var height = (BAR_HEIGHT * times[i]) / maxTime;
     var roundTime = Math.round(times[i]);
-    var maxTime = getMaxElement(times);
     var sizes = CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i;
 
     ctx.font = '16px PT Mono';
@@ -38,8 +38,7 @@ var renderHistograms = function (ctx, players, times) {
 
     ctx.fillStyle = players[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255,' + Math.random() + ')';
 
-    ctx.fillRect(sizes, CLOUD_HEIGHT - height,
-      BAR_WIDTH, height - TEXT_GAP);
+    ctx.fillRect(sizes, CLOUD_HEIGHT - height, BAR_WIDTH, height - TEXT_GAP);
   });
 }
 
