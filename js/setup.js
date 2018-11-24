@@ -25,7 +25,7 @@ var getWizardNames = function () {
     'Вашингтон'
   ];
 
-  return name[Math.floor(Math.random() * name.length)];
+  return name[Math.floor(Math.random () * name.length)];
 };
 
 var getWizardLastname = function () {
@@ -40,11 +40,10 @@ var getWizardLastname = function () {
     'Ирвинг'
   ];
 
-  return lastname[Math.floor(Math.random() * surname.length)];
+  return lastname[Math.floor(Math.random () * lastname.length)];
 };
 
 var resultName = getWizardNames() + ' ' + getWizardLastname();
-alert(resultName);
 
 var getColorCoat = function () {
   var colorCoat = [
@@ -56,7 +55,7 @@ var getColorCoat = function () {
     'rgb(0, 0, 0)'
   ];
 
-  return colorCoat[Math.floor(Math.random() * colorCoat.length)];
+  return colorCoat[Math.floor(Math.random () * colorCoat.length)];
 };
 
 var getColorEyes = function () {
@@ -68,7 +67,7 @@ var getColorEyes = function () {
     'green'
   ];
 
-  return colorEyes[Math.floor(Math.random() * colorEyes.length)];
+  return colorEyes[Math.floor(Math.random () * colorEyes.length)];
 };
 
 var wizardsArray = [];
@@ -100,6 +99,8 @@ var addsElements = function () {
   fragment.appendChild(wizardCoat);
   fragment.appendChild(wizardEyes);
   setupSimilarList.appendChild(fragment);
+
+  return setupSimilarList;
 }
 
 // 5
