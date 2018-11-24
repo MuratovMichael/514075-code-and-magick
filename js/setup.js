@@ -11,7 +11,7 @@ function Wizards (name, coatColor, eyesColor) {
   this.name = name;
   this.coatColor = coatColor;
   this.eyesColor = eyesColor;
-}
+};
 
 var getWizardNames = function () {
   var name = [
@@ -26,7 +26,7 @@ var getWizardNames = function () {
   ];
 
   return name[Math.floor(Math.random() * name.length)];
-}
+};
 
 var getWizardLastname = function () {
   var lastname = [
@@ -41,7 +41,7 @@ var getWizardLastname = function () {
   ];
 
   return lastname[Math.floor(Math.random() * surname.length)];
-}
+};
 
 var resultName = getWizardNames() + ' ' + getWizardLastname();
 alert(resultName);
@@ -56,8 +56,8 @@ var getColorCoat = function () {
     'rgb(0, 0, 0)'
   ];
 
-  return colorCoat[Math.floor(Math.random() * colors.length)];
-}
+  return colorCoat[Math.floor(Math.random() * colorCoat.length)];
+};
 
 var getColorEyes = function () {
   var colorEyes = [
@@ -68,15 +68,15 @@ var getColorEyes = function () {
     'green'
   ];
 
-  return colorEyes[Math.floor(Math.random() * colorsEyes.length)];
-}
+  return colorEyes[Math.floor(Math.random() * colorEyes.length)];
+};
 
 var wizardsArray = [];
 
 for (var i = 0; i < 4; i++) {
   var wizards = new Wizards(resultName, getColorCoat(), getColorEyes());
-  wizardsArray.push(new Picture(i));
-}
+  wizardsArray.push(new Wizards(i));
+};
 
 // 3
 
@@ -85,10 +85,10 @@ var getElements = function () {
   nameWizard.textContent = wizards[0];
 
   var wizardCoat = document.querySelector('.wizard-coat');
-  wizardCoat.style.fill = wizard[1];
+  wizardCoat.style.fill = wizards[1];
 
   var wizardEyes = document.querySelector('.wizard-eyes');
-  wizardEyes.style.fill = wizard[2];
+  wizardEyes.style.fill = wizards[2];
 }
 
 // 4
