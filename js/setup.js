@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 // Функция отображения элементов
 var showElements = function () {
   var setup = document.querySelector('.setup');
-  setup.className.remove('hidden');
+  setup.classList.remove('hidden');
 
   var setupSimilar = document.querySelector('.setup-similar');
   setupSimilar.classList.remove('hidden');
@@ -14,7 +14,7 @@ function Wizard(name, coatColor, eyesColor) {
   this.name = name;
   this.coatColor = coatColor;
   this.eyesColor = eyesColor;
-};
+}
 
 var getWizardNames = function () {
   var name = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
@@ -27,11 +27,8 @@ var getWizardLastName = function () {
 };
 
 // Формирует имя и фамилию мага
-var getNameLastName = function () {
-  var nameWizard = getWizardNames ();
-  var lastNameWizard = getWizardLastName ();
-
-  return nameWizard + ' ' + lastNameWizard;
+var getFullName = function () {
+  return getWizardNames() + ' ' + getWizardLastName();
 };
 
 // Формирует цвет мантии
@@ -50,7 +47,7 @@ var getColorEyes = function () {
 var makeWizardsArray = function (player) {
   var localWizards = [];
   for (var i = 1; i <= player; i++) {
-    localWizards.push(new Wizard(getWizardNames(), getColorCoat(), getColorEyes()));
+    localWizards.push(new Wizard(getFullName(), getColorCoat(), getColorEyes()));
   }
   return localWizards;
 };
@@ -74,3 +71,6 @@ var renderWizards = function (elements) {
   });
   setupSimilarList.appendChild(fragment);
 };
+
+showElements();
+renderWizards(wizards);
