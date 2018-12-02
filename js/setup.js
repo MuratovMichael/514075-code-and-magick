@@ -14,7 +14,7 @@ function Wizard(name, coatColor, eyesColor) {
   this.name = name;
   this.coatColor = coatColor;
   this.eyesColor = eyesColor;
-}
+};
 
 var getWizardNames = function () {
   var name = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
@@ -28,35 +28,21 @@ var getWizardLastName = function () {
 
 // Формирует имя и фамилию мага
 var getNameLastName = function () {
-  var nameWizard = getWizardNames();
-  var lastNameWizard = getWizardLastName();
+  var nameWizard = getWizardNames ();
+  var lastNameWizard = getWizardLastName ();
 
   return nameWizard + ' ' + lastNameWizard;
 };
 
 // Формирует цвет мантии
 var getColorCoat = function () {
-  var colorCoat = [
-    'rgb(101, 137, 164)',
-    'rgb(241, 43, 107)',
-    'rgb(146, 100, 161)',
-    'rgb(56, 159, 117)',
-    'rgb(215, 210, 55)',
-    'rgb(0, 0, 0)'
-  ];
+  var colorCoat = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
   return colorCoat[Math.floor(Math.random () * colorCoat.length)];
 };
 
 // Формирует цвет глаз
 var getColorEyes = function () {
-  var colorEyes = [
-    'black',
-    'red',
-    'blue',
-    'yellow',
-    'green'
-  ];
-
+  var colorEyes = ['black', 'red', 'blue', 'yellow', 'green'];
   return colorEyes[Math.floor(Math.random () * colorEyes.length)];
 };
 
