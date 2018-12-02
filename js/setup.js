@@ -26,24 +26,20 @@ var getWizardLastName = function () {
   return lastname[Math.floor(Math.random () * lastname.length)];
 };
 
-// Формирует имя и фамилию мага
 var getFullName = function () {
   return getWizardNames() + ' ' + getWizardLastName();
 };
 
-// Формирует цвет мантии
 var getColorCoat = function () {
   var colorCoat = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
   return colorCoat[Math.floor(Math.random () * colorCoat.length)];
 };
 
-// Формирует цвет глаз
 var getColorEyes = function () {
   var colorEyes = ['black', 'red', 'blue', 'yellow', 'green'];
   return colorEyes[Math.floor(Math.random () * colorEyes.length)];
 };
 
-// Функция создания массива объектов
 var makeWizardsArray = function (player) {
   var localWizards = [];
   for (var i = 1; i <= player; i++) {
