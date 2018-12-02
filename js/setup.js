@@ -1,17 +1,20 @@
 'use strict'
 
-// 1
+// Функция отображения элементов
+var showElements = function () {
+  var setup = document.querySelector('.setup');
+  setup.className.remove('hidden');
 
-var setup = document.querySelector('.setup');
-setup.className.remove('hidden');
+  var setupSimilar = document.querySelector('.setup-similar');
+  setupSimilar.classList.remove('hidden');
+}
 
-// 2
-
-function Wizards (name, coatColor, eyesColor) {
+// Объект конструктор
+function Wizard(name, coatColor, eyesColor) {
   this.name = name;
   this.coatColor = coatColor;
   this.eyesColor = eyesColor;
-};
+}
 
 var getWizardNames = function () {
   var name = [
@@ -28,7 +31,7 @@ var getWizardNames = function () {
   return name[Math.floor(Math.random () * name.length)];
 };
 
-var getWizardLastname = function () {
+var getWizardLastName = function () {
   var lastname = [
     'да Марья',
     'Верон',
@@ -43,8 +46,15 @@ var getWizardLastname = function () {
   return lastname[Math.floor(Math.random () * lastname.length)];
 };
 
-var resultName = getWizardNames() + ' ' + getWizardLastname();
+// Формирует имя и фамилию мага
+var getNameLastName = function () {
+  var nameWizard = getWizardNames();
+  var lastNameWizard = getWizardLastName();
 
+  return nameWizard + ' ' + lastNameWizard;
+};
+
+// Формирует цвет мантии
 var getColorCoat = function () {
   var colorCoat = [
     'rgb(101, 137, 164)',
@@ -58,6 +68,7 @@ var getColorCoat = function () {
   return colorCoat[Math.floor(Math.random () * colorCoat.length)];
 };
 
+// Формирует цвет глаз
 var getColorEyes = function () {
   var colorEyes = [
     'black',
@@ -70,40 +81,31 @@ var getColorEyes = function () {
   return colorEyes[Math.floor(Math.random () * colorEyes.length)];
 };
 
-var wizardsArray = [];
+// Функция создания массива объектов
+var makeWizardsArray = function (player) {
+  var localWizards = [];
+  for (var i = 1; i <= player; i++) {
+    localWizards.push(new Wizard(getWizardNames(), getColorCoat(), getColorEyes()));
+  }
+  return localWizards;
+}
 
-for (var i = 0; i < 4; i++) {
-  var wizards = new Wizards(resultName, getColorCoat(), getColorEyes());
-  wizardsArray.push(new Wizards(i));
+var wizards = makeWizardsArray(4);
+
+var renderWizard = function (item) {
+  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+  similarElement.querySelector('.setup-similar-label').textContent = item.name;
+  similarElement.querySelector('.wizard-coat').style.fill = item.coatColor;
+  similarElement.querySelector('.wizard-eyes').style.fill = item.eyesColor;
+  return wizardElement;
 };
 
-// 3
-
-var getElements = function () {
-  var nameWizard = document.querySelector('.setup-similar-label');
-  nameWizard.textContent = wizards[0];
-
-  var wizardCoat = document.querySelector('.wizard-coat');
-  wizardCoat.style.fill = wizards[1];
-
-  var wizardEyes = document.querySelector('.wizard-eyes');
-  wizardEyes.style.fill = wizards[2];
-}
-
-// 4
-
-var addsElements = function () {
-  var fragment = document.createElementFragment();
+var renderWizards = function (wizards) {
   var setupSimilarList = document.querySelector('.setup-similar-list');
-  fragment.appendChild(nameWizard);
-  fragment.appendChild(wizardCoat);
-  fragment.appendChild(wizardEyes);
+  var fragment = document.createDocumentFragment();
+  wizards.forEach (function (wizard) {
+    fragment.appendChild(renderWizard(wizard));
+  });
   setupSimilarList.appendChild(fragment);
-
-  return setupSimilarList;
-}
-
-// 5
-
-var setupSimilar = document.querySelector('.setup-similar');
-setupSimilar.classList.remove('hidden');
+};
