@@ -18,12 +18,12 @@ function Wizard(name, coatColor, eyesColor) {
 
 var getWizardNames = function () {
   var name = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  return name[Math.floor(Math.random () * name.length)];
+  return name[Math.floor(Math.random() * name.length)];
 };
 
 var getWizardLastName = function () {
   var lastname = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-  return lastname[Math.floor(Math.random () * lastname.length)];
+  return lastname[Math.floor(Math.random() * lastname.length)];
 };
 
 var getFullName = function () {
@@ -32,12 +32,12 @@ var getFullName = function () {
 
 var getColorCoat = function () {
   var colorCoat = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-  return colorCoat[Math.floor(Math.random () * colorCoat.length)];
+  return colorCoat[Math.floor(Math.random() * colorCoat.length)];
 };
 
 var getColorEyes = function () {
   var colorEyes = ['black', 'red', 'blue', 'yellow', 'green'];
-  return colorEyes[Math.floor(Math.random () * colorEyes.length)];
+  return colorEyes[Math.floor(Math.random() * colorEyes.length)];
 };
 
 var makeWizardsArray = function (player) {
@@ -62,7 +62,7 @@ var renderWizard = function (item) {
 var renderWizards = function (elements) {
   var setupSimilarList = document.querySelector('.setup-similar-list');
   var fragment = document.createDocumentFragment();
-  elements.forEach (function (wizard) {
+  elements.forEach(function (wizard) {
     fragment.appendChild(renderWizard(wizard));
   });
   setupSimilarList.appendChild(fragment);

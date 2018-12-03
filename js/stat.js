@@ -25,7 +25,7 @@ var renderCongratulation = function (ctx) {
 };
 
 var renderHistograms = function (ctx, players, times) {
-  players.forEach(function(elem, i) {
+  players.forEach(function (elem, i) {
     var maxTime = getMaxElement(times);
     var height = (BAR_HEIGHT * times[i]) / maxTime;
     var roundTime = Math.round(times[i]);
