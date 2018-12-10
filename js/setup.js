@@ -40,6 +40,11 @@ var getColorEyes = function () {
   return colorEyes[Math.floor(Math.random() * colorEyes.length)];
 };
 
+var getColorsFireball = function () {
+  var fireballColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+  return fireballColors[Math.floor(Math.random() * fireballColors.length)];
+};
+
 var makeWizardsArray = function (player) {
   var localWizards = [];
   for (var i = 1; i <= player; i++) {
@@ -70,3 +75,70 @@ var renderWizards = function (elements) {
 
 showElements();
 renderWizards(wizards);
+
+// Обработка событий -----------------------------------------------------
+
+var setup = document.querySelector('.setup'); // Окно
+var setupOpen = document.querySelector('.setup-open'); // Кнопка открытия окна
+var setupClose = document.querySelector('.setup-close'); // Кнопка закрытия окна
+var setupSubmit = document.querySelector('.setup-submit'); // Кнопка отправки данных на сервер
+var setupForm = document.querySelector('.setup-wizard-form'); // Форма
+var setupUserName = document.querySelector('.setup-user-name'); // Имя персонажа
+var wizardCoat = document.querySelector('.setup-wizard .wizard-coat'); // Цвет мантии
+var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes'); // Цвет глаз
+var fireball = document.querySelector('.setup-fireball-wrap'); // Цвет фаербола
+
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function() {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function() {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+// Генерация цвета мантии
+wizardCoat.addEventListener('click', function () {
+  getColorCoat();
+});
+
+// Генерация цвета глаз
+wizardEyes.addEventListener('click', function () {
+  getColorEyes();
+});
+
+fireball.addEventListener('click', function () {
+  getColorsFireball();
+});
+
+console.log();
